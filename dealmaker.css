@@ -4,37 +4,84 @@ body {
 p {
     margin: 0;
     font-size: 13px;
+    line-height: 1.4;
+}
+select, input {
+    width: 200px;
+    border: none;
 }
 #wrapper {
-
     margin: 0 auto;
 }
 .active{
     background-color: #ffbbbb;
 }
-
-
-#left {
+#left, #right {
     margin: 10px;
-    background-color: #efefef;
+}
+#left {
+    float: left;
+}
+#right {
+
+}
+#left select, #left input, p.floorLabel {
+    display: inline-block;
+}
+p.label {
+    width: 200px;
+    font-weight: bold;
+}
+#formButton {
+    width: 400px;
+}
+input#submit {
+    display: block;
+    margin: 5px auto;
 }
 
-#right {
+#bottom {
     border-top: dotted 10px black;
     color: #222222;
+    clear: left;
 }
-#right p {
+#bottom p {
     font-family: "Courier New", Courier, monospace;
     color: white;
     margin: 20px;
     color: #222222
 }
-#right h2 {
+#bottom h2 {
     font-size: 20px;
     margin: 10px;
 }
-#right pre {
+#bottom pre {
     font-size: 14px;
     font-family: "Courier New", Courier, monospace;
     color: #222222;
+}
+.tabs {
+    margin-top: 10px;
+    width: 100%;
+    height: 25px;
+}
+.tab {
+    padding: 0 5px;
+    display: inline-block;
+    height: 25px;
+    width: 100px;
+    border-radius: 8px 8px 0 0;
+    background-color: #7d7d7d;
+}
+.activeTab {
+    background-color: #d3d3d3;
+}
+#engPage, #jaPage {
+    overflow: auto;
+    position: absolute;
+    background-color: #d3d3d3;
+    width: 100%;
+}
+#engPage {
+    visibility: hidden;
 }

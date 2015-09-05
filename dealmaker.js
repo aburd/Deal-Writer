@@ -120,6 +120,22 @@ function setVars() {
 }
 
 $(document).ready( function(){    
+   
+    var jaPage = $('#bottom #jaPage'),
+        engPage = $('#bottom #engPage');
+    $('#enTab').click(function(){
+        if(engPage.css('visibility', 'hidden')){
+            jaPage.css('visibility', 'hidden');
+            engPage.css('visibility', 'visible'); 
+        }
+    });
+    $('#jaTab').click(function(){
+        
+        if(jaPage.css('visibility', 'hidden')){
+            engPage.css('visibility', 'hidden');
+            jaPage.css('visibility', 'visible'); 
+        }
+    });
     
     $('select').click( function(){
         console.log($('option:selected', this).val());
