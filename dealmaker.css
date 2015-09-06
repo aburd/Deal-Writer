@@ -35,9 +35,11 @@ p.label {
 #formButton {
     width: 400px;
 }
+
 input#submit {
     display: block;
     margin: 5px auto;
+    cursor: pointer;
 }
 
 #bottom {

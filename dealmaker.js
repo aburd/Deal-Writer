@@ -188,8 +188,8 @@ function setVars() {
 function showNames(floor1, floor2, floor1en, floor2en){
     $('#jaPage #floor1ja').html(floor1);
     $('#jaPage #floor2ja').html(floor2);
-    $('#engPage #floor1en').html(floor1);
-    $('#engPage #floor2en').html(floor2);
+    $('#engPage #floor1en').html(floor1en);
+    $('#engPage #floor2en').html(floor2en);
 }
 
 $(document).ready( function(){    
