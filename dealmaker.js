@@ -1,3 +1,4 @@
+// set all the variables needed for the deal making
 var month = 0;
 var monthEng = "";
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -6,6 +7,7 @@ var voOldb, voNewb, comOldb, comNewb, addressOldb, addressNewb, meetingsOldb, me
 var floor1NameEn, floor1UrlEn, floor2NameEn, floor2UrlEn, area1 = "";
 var floor1NameJa, floor1UrlJa, floor2NameJa, floor2UrlJa, area2 = "";
         
+// return html string for japanese deal - floor 1 using bracketing
 function makeDealJa1() {
 
     var x = `<pre>
@@ -34,6 +36,7 @@ function makeDealJa1() {
     return x;
 }
 
+// html string for japanese deal - floor 2
 function makeDealJa2() {
 
     var x = `<pre>
@@ -61,7 +64,21 @@ function makeDealJa2() {
 
     return x;
 }
-        
+
+//return promo in japanese using bracketing
+function makePromoJa() {
+    var x = `<pre>
+&lt;div class="sc-content" id="promo"&gt;&lt;strong&gt;${month}月限定スペシャル!&lt;/strong&gt;
+    &lt;div class="sc-content" id="promoin"&gt;
+        &lt;a href="#${area1}" class="smooth"&gt;&lt;strong style="color: #494949;"&gt;${floor1NameJa}&lt;/strong&gt;&lt;/a&gt; または、&lt;a href="#${area2}" class="smooth" &gt;&lt;strong style="color: #494949;"&gt;${floor2NameJa}&lt;/strong&gt;&lt;/a&gt;を特別割引料金でお申込みいただけます。
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>`;
+    
+    return x;
+}
+      
+// html string for english deal - floor 1  
 function makeDealEn1(){
     var x = `<pre>
 &lt;div class="promo"&gt;
@@ -89,6 +106,7 @@ function makeDealEn1(){
     return x;
 }
 
+// html string for english deal - floor 2
 function makeDealEn2(){
     var x = `<pre>
 &lt;div class="promo"&gt;
@@ -116,6 +134,7 @@ function makeDealEn2(){
     return x;
 }
 
+// return promo in english using bracketing
 function makePromoEn() {
     var x = `<pre>
 &lt;div id="promo"&gt; 
@@ -129,27 +148,24 @@ function makePromoEn() {
     return x;
 }
 
-function makePromoJa() {
-    var x = `<pre>
-&lt;div class="sc-content" id="promo"&gt;&lt;strong&gt;${month}月限定スペシャル!&lt;/strong&gt;
-    &lt;div class="sc-content" id="promoin"&gt;
-        &lt;a href="#${area1}" class="smooth"&gt;&lt;strong style="color: #494949;"&gt;${floor1NameJa}&lt;/strong&gt;&lt;/a&gt; または、&lt;a href="#${area2}" class="smooth" &gt;&lt;strong style="color: #494949;"&gt;${floor2NameJa}&lt;/strong&gt;&lt;/a&gt;を特別割引料金でお申込みいただけます。
-    &lt;/div&gt;
-&lt;/div&gt;
-</pre>`;
-    
-    return x;
+// object to hold preview update functions
+function update (val, element) {
+    element.html(val);
 }
 
+
+// for form validation
 function isNumber(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
+// return the location that was selected in the form
 function getSelected() {
     var x = $('option:selected', this).val();
     return x;
 }
 
+// set the variables from the forms
 function setVars() {
     month = $('#month').val();
     voOld = $("#price0").val();
@@ -185,6 +201,7 @@ function setVars() {
     floor2UrlJa = "http://www.servcorp.co.jp/ja" + $x.data('url');
 }
 
+// this shows the floor names in the results window
 function showNames(floor1, floor2, floor1en, floor2en){
     $('#jaPage #floor1ja').html(floor1);
     $('#jaPage #floor2ja').html(floor2);
@@ -193,12 +210,33 @@ function showNames(floor1, floor2, floor1en, floor2en){
 }
 
 $(document).ready( function(){    
-   
+    
+    // update the preview month
+    $('#month').change( function(){
+        x = $(this).val();
+        update(x, $('#preview-month-ja'));
+    });
+
+    // update the preview floor
+    $('select.floorSelect').change( function(){
+        if(this.id === 'floor1'){
+            x = $('option:selected', this).attr('ja');
+            update(x, $('span#floor1ja'));            
+        } 
+        else if(this.id === 'floor2'){
+            x = $('option:selected', this).attr('ja');
+            update(x, $('span#floor2ja'));  
+        }
+
+    });
+
+    // get the elements for the tabs
     var jaPage = $('#bottom #jaPage'),
         engPage = $('#bottom #engPage'),
         enTab = $('#enTab'),
         jaTab = $('#jaTab');
 
+    // show the english tab
     enTab.click(function(){
         if(engPage.css('visibility', 'hidden')){
             jaPage.css('visibility', 'hidden');
@@ -207,21 +245,18 @@ $(document).ready( function(){
             enTab.addClass('activeTab'); 
         }
     });
+
+    // show the japanese tab
     jaTab.click(function(){
-        
         if(jaPage.css('visibility', 'hidden')){
             engPage.css('visibility', 'hidden');
             enTab.removeClass('activeTab');
             jaPage.css('visibility', 'visible');
             jaTab.addClass('activeTab'); 
         }
-
     });
     
-    $('select').click( function(){
-        console.log($('option:selected', this).val());
-    });
-    
+    // on click validate the data and update everything
     $('#submit').click(function(){
         
         var x = "";
@@ -275,10 +310,9 @@ $(document).ready( function(){
 
             showNames(floor1NameJa, floor2NameJa, floor1NameEn, floor2NameEn);
 
-            $('#jaPage').children('p').fadeIn(2000);    
-            $('#engPage').children('p').fadeIn(2000);    
-            
-            console.log(x);    
+            // $('#jaPage').children('p').fadeIn(2000);    
+            // $('#engPage').children('p').fadeIn(2000);    
+                
         } 
         else {
             $('#error').html("<strong>Please make sure all prices are filled correctly.</strong>")

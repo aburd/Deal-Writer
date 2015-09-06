@@ -23,7 +23,7 @@ select, input {
     float: left;
 }
 #right {
-
+    display: inline-block;
 }
 #left select, #left input, p.floorLabel {
     display: inline-block;
@@ -86,4 +86,26 @@ input#submit {
 }
 #engPage {
     visibility: hidden;
+}
+
+#preview-offer {
+    width: 314px;
+    background-color: #9d053b;
+    padding: 8px;
+    color: #FFFFFF;
+    font-size: 14px;
+}
+
+#promoin {
+    margin-top: 5px;
+    background-color: #FFFFFF;
+    color: #32353A;
+    padding: 8px;
+    font-size: 13px;
+    line-height: 1.2;
+}
+
+#promo a {
+    color: #32353A;
+    text-decoration: underline;
 }

@@ -38,7 +38,7 @@
                     <p class="label floorLabel">Floor 1</p>
                     <p class="label floorLabel">Floor 2</p>
                 </p>
-                <select name="Floor1" id="floor1">
+                <select name="Floor1" class="floorSelect" id="floor1">
                     <optgroup data-labelja="東京" label="Tokyo">
                         <option ja="丸の内トラストタワー本館" data-url="">Marunouchi Trust Tower - Main</option>
                         <option ja="丸の内郵船ビル" data-url="/locations/tokyo/marunouchi-yusen-building/serviced-offices/">Marunouchi Yusen Building</option>
@@ -73,7 +73,7 @@
                     </optgroup>
                 </select>
 
-                <select name="Floor2" id="floor2">
+                <select name="Floor2" class="floorSelect" id="floor2">
                     <optgroup data-labelja="東京" label="Tokyo">
                         <option ja="丸の内トラストタワー本館" data-url="">Marunouchi Trust Tower - Main</option>
                         <option ja="丸の内郵船ビル" data-url="/locations/tokyo/marunouchi-yusen-building/serviced-offices/">Marunouchi Yusen Building</option>
@@ -132,21 +132,46 @@
                 <input class="price" type="text" id="priceb6">
                 <p class="label">Meetings New</p>
                 <input class="price" type="text" id="price7">  
-                <input class="price" type="text" id="priceb7">  
+                <input class="price" type="text" id="priceb7">
+
                 <div id="formButton">
                     <input type="button" id="submit" value="Submit">
-                </p>
-
+                </div>
+                
             </div>
 
-        </div> 
-        <div id="right">
-            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis doloremque odit nihil officia adipisci consectetur inventore facilis ratione quisquam saepe! Expedita nesciunt rerum quo impedit incidunt eum veniam provident pariatur!</div>
-            <div>Maxime enim pariatur rerum illo molestiae dolores dignissimos illum veritatis ipsa temporibus, dolor repellat quos nam nisi velit ipsum. Ad odio quae quis aliquid, asperiores dolorem dolor, sed nostrum tempora!</div>
-            <div>Optio quam vel, accusantium quia dolorum laboriosam. Et ipsam, facilis saepe nobis corporis! Non laboriosam molestiae repudiandae maiores, voluptatem voluptatibus quis voluptate, amet aspernatur quam veniam accusantium numquam doloribus dignissimos.</div>
-            <div>Eos labore totam nisi consequuntur, itaque omnis praesentium animi non, assumenda ipsum adipisci reiciendis quasi fugit eveniet quidem accusantium tempore. Et dignissimos recusandae error doloremque. Quam, soluta corporis nemo exercitationem?</div>
         </div>
         <!-- /left -->
+
+        <div id="right">
+
+            <div id="preview-offer"><strong><span id="preview-month-ja"></span>月限定スペシャル!</strong>
+                <div class="sc-content" id="promoin">
+                    <a href="#"><strong style="color: #494949;"><span id="floor1ja"></span></strong></a> または、<a href="#"><strong style="color: #494949;"><span id="floor2ja"></span></strong></a>を特別割引料金でお申込みいただけます。
+                </div>
+            </div>
+            <br>
+            <!-- stopped here -->
+            <div id="preview-deal" style="width: 211px"><strong><span class="preview-month">7</span>月限定オファー</strong>
+                <div id="deal-table">                 
+                    <table>
+                        <tr>
+                            <td>バーチャルオフィス<br /><span class="oldprice" id="prev-old-vo">¥5</span> <strong>¥5</strong></td>
+                        </tr>
+                        <tr>
+                            <td>電話秘書代行 <span class="oldprice">¥5</span> <strong>¥5</strong></td>
+                        </tr>
+                        <tr>
+                            <td>貸し住所 <span class="oldprice">¥5</span> <strong>¥5</strong></td>
+                        </tr>
+                        <tr>
+                            <td>貸会議室 <span class="oldprice">¥5</span> <strong>¥5</strong></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
 
         <div id="bottom">
             <div class="tabs">
